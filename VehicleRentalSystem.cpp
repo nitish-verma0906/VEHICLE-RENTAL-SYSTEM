@@ -408,7 +408,7 @@ public:
         ifstream file("bookings.txt");
 
         if (!file) {
-            cout << "Booking File Not Found!" << endl;
+            cout << "Booking File Not Found" << endl;
             return;
         }
 
@@ -433,9 +433,6 @@ public:
             }
         }
 
-        if (!found) {
-            cout << "Booking Not Found!" << endl;
-        }
 
         file.close();
     }
@@ -478,8 +475,6 @@ public:
     }
 }
 
-if (!found)
-    cout << "No " << requiredStatus << " Vehicles Found" << endl;
 
 file.close();
     }
