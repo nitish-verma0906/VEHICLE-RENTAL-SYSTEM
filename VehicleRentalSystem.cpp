@@ -110,7 +110,7 @@ void addVehicle() {
         cin >> type;
 
         if (type == 0) {
-            cout << "Vehicle adding stopped!" << endl;
+            cout << "Vehicle adding stopped" << endl;
             break;
         }
 
@@ -123,7 +123,7 @@ void addVehicle() {
             v = new Bike;
         }
         else {
-            cout << "Invalid Vehicle Type!" << endl;
+            cout << "Invalid Vehicle Type" << endl;
             continue;
         }
 
@@ -135,7 +135,7 @@ void addVehicle() {
 
         v->saveToFile();
 
-        cout << "\nVehicle Added Successfully!" << endl;
+   
         v->showDetails();
 
         delete v;
@@ -151,32 +151,27 @@ void viewVehicles() {
     double rent;
     bool found = false;
 
-    while (getline(file, type)) {
-        if (!(file >> id))
-            break;
-        file.ignore(1000, '\n');
+   while (getline(file, type)) {
+    file >> id;
+    file.ignore(1000, '\n');
 
-        if (!getline(file, name))
-            break;
+    getline(file, name);
 
-        if (!(file >> rent))
-            break;
-        file.ignore(1000, '\n');
+    file >> rent;
+    file.ignore(1000, '\n');
 
-        if (!getline(file, status))
-            break;
+    getline(file, status);
 
-        cout << "\n----------------------" << endl;
-        cout << "Vehicle Type: " << type << endl;
-        cout << "Vehicle ID: " << id << endl;
-        cout << "Vehicle Name: " << name << endl;
-        cout << "Rent Per Day: Rs. " << rent << endl;
-        cout << "Status: " << status << endl;
+    cout << "\n----------------------" << endl;
+    cout << "Vehicle Type: " << type << endl;
+    cout << "Vehicle ID: " << id << endl;
+    cout << "Vehicle Name: " << name << endl;
+    cout << "Rent Per Day: Rs. " << rent << endl;
+    cout << "Status: " << status << endl;
 
-        found = true;
-    }
-
-    file.close();
+    found = true;
+}
+file.close();
 
     if (!found) {
         cout << "No Vehicle Found!" << endl;
@@ -197,40 +192,37 @@ void deleteVehicle() {
     ofstream temp("temp.txt");
 
     while (getline(file, type)) {
-        if (!(file >> id))
-            break;
-        file.ignore(1000, '\n');
+    file >> id;
+    file.ignore(1000, '\n');
 
-        if (!getline(file, name))
-            break;
+    getline(file, name);
 
-        if (!(file >> rent))
-            break;
-        file.ignore(1000, '\n');
+    file >> rent;
+    file.ignore(1000, '\n');
 
-        if (!getline(file, status))
-            break;
+    getline(file, status);
 
-        if (id == deleteId) {
-            if (status == "Booked") {
-                cout << "Vehicle is booked. Cannot delete!" << endl;
-                temp << type << endl << id << endl
-                     << name << endl << rent << endl
-                     << status << endl;
-            }
-            else {
-                found = true;
-            }
-        }
-        else {
+    if (id == deleteId) {
+        if (status == "Booked") {
+            cout << "Vehicle is booked. Cannot delete!" << endl;
+
             temp << type << endl << id << endl
                  << name << endl << rent << endl
                  << status << endl;
         }
+        else {
+            found = true;
+        }
     }
+    else {
+        temp << type << endl << id << endl
+             << name << endl << rent << endl
+             << status << endl;
+    }
+}
 
-    file.close();
-    temp.close();
+file.close();
+temp.close();
 
     remove("vehicles.txt");
     rename("temp.txt", "vehicles.txt");
@@ -257,28 +249,24 @@ public:
        
         ifstream file("vehicles.txt");
 
-        while (getline(file, type)) {
-            if (!(file >> id))
-                break;
-            file.ignore(1000, '\n');
+       while (getline(file, type)) {
+    file >> id;
+    file.ignore(1000, '\n');
 
-            if (!getline(file, name))
-                break;
+    getline(file, name);
 
-            if (!(file >> rent))
-                break;
-            file.ignore(1000, '\n');
+    file >> rent;
+    file.ignore(1000, '\n');
 
-            if (!getline(file, status))
-                break;
+    getline(file, status);
 
-            if (id == searchId && status == "Available") {
-                found = true;
-                break;
-            }
-        }
+    if (id == searchId && status == "Available") {
+        found = true;
+        break;
+    }
+}
 
-        file.close();
+file.close();
 
         if (!found) {
             cout << "Vehicle not available!" << endl;
@@ -288,11 +276,7 @@ public:
         cout << "Enter Number of Days: ";
         cin >> days;
 
-        if (days <= 0) {
-            cout << "Invalid Number of Days!" << endl;
-            return;
-        }
-
+        
         total = rent * days;
 
     
@@ -300,58 +284,46 @@ public:
         string line;
         int oldBookingId;
 
-        while (getline(bookings, line)) {
-            if (line.empty())
-                continue;
+while (getline(bookings, line)) {
+    if (line.empty())
+        continue;
 
-            try {
-                oldBookingId = stoi(line);
+    oldBookingId = stoi(line);
 
-                if (oldBookingId >= bookingId)
-                    bookingId = oldBookingId + 1;
-            }
-            catch (...) {
-                break;
-            }
+    if (oldBookingId >= bookingId)
+        bookingId = oldBookingId + 1;
 
-         
-            for (int i = 0; i < 5; i++) {
-                if (!getline(bookings, line))
-                    break;
-            }
-        }
+    for (int i = 0; i < 5; i++)
+        getline(bookings, line);
+}
 
-        bookings.close();
+bookings.close();
 
       
         ifstream input("vehicles.txt");
         ofstream temp("temp.txt");
 
-        while (getline(input, type)) {
-            if (!(input >> id))
-                break;
-            input.ignore(1000, '\n');
+       while (getline(input, type)) {
+    input >> id;
+    input.ignore(1000, '\n');
 
-            if (!getline(input, name))
-                break;
+    getline(input, name);
 
-            if (!(input >> rent))
-                break;
-            input.ignore(1000, '\n');
+    input >> rent;
+    input.ignore(1000, '\n');
 
-            if (!getline(input, status))
-                break;
+    getline(input, status);
 
-            if (id == searchId)
-                status = "Booked";
+    if (id == searchId)
+        status = "Booked";
 
-            temp << type << endl << id << endl
-                 << name << endl << rent << endl
-                 << status << endl;
-        }
+    temp << type << endl << id << endl
+         << name << endl << rent << endl
+         << status << endl;
+}
 
-        input.close();
-        temp.close();
+input.close();
+temp.close();
 
         remove("vehicles.txt");
         rename("temp.txt", "vehicles.txt");
@@ -391,7 +363,7 @@ public:
         bool found = false;
 
         if (!file) {
-            cout << "No Rental History Found!" << endl;
+            cout << "No Rental History Found" << endl;
             return;
         }
 
@@ -485,36 +457,31 @@ public:
         cout << "\n " << requiredStatus<< " VEHICLES \n";
 
         while (getline(file, type)) {
-            if (!(file >> id))
-                break;
-            file.ignore(1000, '\n');
+    file >> id;
+    file.ignore(1000, '\n');
 
-            if (!getline(file, name))
-                break;
+    getline(file, name);
 
-            if (!(file >> rent))
-                break;
-            file.ignore(1000, '\n');
+    file >> rent;
+    file.ignore(1000, '\n');
 
-            if (!getline(file, status))
-                break;
+    getline(file, status);
 
-            if (status == requiredStatus) {
-                cout << "\nVehicle Type: " << type << endl;
-                cout << "Vehicle ID: " << id << endl;
-                cout << "Vehicle Name: " << name << endl;
-                cout << "Rent Per Day: Rs. " << rent << endl;
-                cout << "Status: " << status << endl;
+    if (status == requiredStatus) {
+        cout << "\nVehicle Type: " << type << endl;
+        cout << "Vehicle ID: " << id << endl;
+        cout << "Vehicle Name: " << name << endl;
+        cout << "Rent Per Day: Rs. " << rent << endl;
+        cout << "Status: " << status << endl;
 
-                found = true;
-            }
-        }
+        found = true;
+    }
+}
 
-        if (!found) {
-            cout << "No " << requiredStatus << " Vehicles Found" << endl;
-        }
+if (!found)
+    cout << "No " << requiredStatus << " Vehicles Found" << endl;
 
-        file.close();
+file.close();
     }
 };
 
