@@ -18,3 +18,8 @@ Bike
 PULSAR
 1000
 Booked
+Car
+104
+ALTO
+2000
+Booked
