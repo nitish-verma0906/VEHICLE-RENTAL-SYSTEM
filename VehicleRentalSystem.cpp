@@ -204,7 +204,7 @@ void deleteVehicle() {
 
     if (id == deleteId) {
         if (status == "Booked") {
-            cout << "Vehicle is booked. Cannot delete!" << endl;
+            cout << "Vehicle is booked. Cannot delete" << endl;
 
             temp << type << endl << id << endl
                  << name << endl << rent << endl
