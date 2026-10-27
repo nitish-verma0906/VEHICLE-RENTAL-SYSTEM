@@ -4,7 +4,7 @@
 #include <string>
 #include <cstdio>
 using namespace std;
-
+//module 1
 class Vehicle {
 private:
     int id;
@@ -23,7 +23,7 @@ public:
         cout << "Enter Vehicle ID: ";
         cin >> id;
 
-        cout << "Enter Vehicle Name (without spaces): ";
+        cout << "Enter Vehicle Name : ";
         cin >> name;
 
         cout << "Enter Rent Per Day: ";
@@ -227,10 +227,7 @@ temp.close();
     remove("vehicles.txt");
     rename("temp.txt", "vehicles.txt");
 
-    if (found)
-        cout << "Vehicle Deleted Successfully!" << endl;
-    else
-        cout << "Vehicle not found or is booked!" << endl;
+    
 }
 
 // MODULE 2
