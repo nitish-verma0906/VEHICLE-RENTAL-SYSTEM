@@ -7,7 +7,7 @@ Car
 102
 BMW
 5000
-Available
+Booked
 Car
 103
 HondaCity
@@ -23,3 +23,13 @@ Car
 ALTO
 2000
 Booked
+Car
+203
+maruti
+3000
+Available
+Bike
+203
+nnd
+400
+Available
