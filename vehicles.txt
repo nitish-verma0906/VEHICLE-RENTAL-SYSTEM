@@ -12,7 +12,7 @@ Car
 103
 HondaCity
 2500
-Available
+Booked
 Bike
 201
 PULSAR
